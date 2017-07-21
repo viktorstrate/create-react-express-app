@@ -9,9 +9,10 @@
     "start:server": "NODE_ENV=development babel-node server/server.js",
     "start:client": "cd client && npm start",
     "build": "concurrently -n \"server,client\" \"npm run build:server\" \"npm run build:client\"",
-    "build:server": "NODE_ENV=production babel server -d server/build",
+    "build:server": "NODE_ENV=production babel server -d build",
     "build:client": "cd client && npm run build",
-    "serve": "NODE_ENV=production node server/build/server.js"
+    "serve": "NODE_ENV=production node build/server.js",
+    "lint": "eslint --ignore-path .gitignore server client"
   },
   "author": "Viktor Hundahl Strate",
   "license": "MIT",
@@ -21,6 +22,8 @@
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
-    "babel-preset-env": "^1.6.0"
+    "babel-preset-env": "^1.6.0",
+    "eslint": "^4.2.0",
+    "eslint-plugin-react": "^7.1.0"
   }
 }
