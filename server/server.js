@@ -1,12 +1,20 @@
+require('dotenv').config()
+
 import express from 'express'
+import bodyParser from 'body-parser'
 import path from 'path'
 
 import { projectRoot } from '../config'
 
+// Initialize the database
+require('./mongoose')
+
 const app = express()
 
+app.use(bodyParser.json())
+
 // Import routes
-app.use('/api', require('./api/comments').default)
+app.use('/api', require('./api/comments'))
 
 // Serve client files only in production
 if (process.env.NODE_ENV === 'production') {

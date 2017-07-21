@@ -1,0 +1,21 @@
+.comment-container {
+    margin: 8px auto;
+    padding: 6px;
+    background-color: #e3e7ef;
+    width: 400px;
+    text-align: left;
+}
+
+.comment-delete {
+    width: 30px;
+    height: 24px;
+    background-color: #ee9999;
+    float: right;
+    margin-top: -14px;
+    padding-top: 6px;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 50%;
+    color: #600;
+    cursor: pointer;
+}
