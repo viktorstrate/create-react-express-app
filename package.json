@@ -1,0 +1,26 @@
+{
+  "name": "create-react-express-app",
+  "version": "1.0.0",
+  "description": "Find shelters i Danmark",
+  "scripts": {
+    "test": "npm run test:client",
+    "test:client": "cd client && npm run test",
+    "start": "concurrently -n \"server,client\" \"npm run start:server\" \"npm run start:client\"",
+    "start:server": "NODE_ENV=development babel-node server/server.js",
+    "start:client": "cd client && npm start",
+    "build": "concurrently -n \"server,client\" \"npm run build:server\" \"npm run build:client\"",
+    "build:server": "NODE_ENV=production babel server -d server/build",
+    "build:client": "cd client && npm run build",
+    "serve": "NODE_ENV=production node server/build/server.js"
+  },
+  "author": "Viktor Hundahl Strate",
+  "license": "MIT",
+  "dependencies": {
+    "concurrently": "^3.5.0",
+    "express": "^4.15.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.6.0"
+  }
+}
