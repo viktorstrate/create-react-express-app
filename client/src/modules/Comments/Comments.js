@@ -1,7 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+import './Comment'
 import './Comments.css'
+import Comment from './Comment'
 
 class Comments extends React.Component {
   constructor (props) {
@@ -13,6 +15,7 @@ class Comments extends React.Component {
   }
 
   componentWillMount () {
+    console.log('Fetch comments')
     fetch('/api/comments').then((res) => {
       return res.json()
     }).then((data) => {
@@ -28,6 +31,7 @@ class Comments extends React.Component {
   }
 
   postComment (event) {
+    console.log('Post comment')
     event.preventDefault()
 
     const self = this
@@ -59,7 +63,7 @@ class Comments extends React.Component {
   }
 
   deleteComment (commentId) {
-    console.log('delete', commentId)
+    console.log('Delete comment:', commentId)
 
     const self = this
 
@@ -92,13 +96,7 @@ class Comments extends React.Component {
       let comments = this.state.comments.slice()
       comments.reverse()
       Comments = comments.map(comment => (
-        <div key={comment._id} className="comment-container">
-          <b>Name:</b> {comment.author}<br/>
-          <b>Message:</b> {comment.message}
-          <div className="comment-delete" onClick={this.deleteComment.bind(this, comment._id)} >
-            X
-          </div>
-        </div>
+        <Comment key={comment._id} comment={ comment } onDelete={this.deleteComment.bind(this)} />
       ))
     }
 
