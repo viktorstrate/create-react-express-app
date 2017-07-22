@@ -19,3 +19,38 @@
     color: #600;
     cursor: pointer;
 }
+
+.Comments-input {
+    padding: 16px;
+    border: #ccc solid 1px;
+    width: 400px;
+    height: 80px;
+    margin: 0 auto;
+}
+
+.input-label {
+    margin-right: 8px;
+    position: relative;
+    padding: 5px 0;
+    float: right;
+}
+
+.Comments-labels {
+    float: left;
+    text-align: right;
+    width: 20%;
+}
+
+.Comments-inputs {
+    float: left;
+    width: 80%;
+}
+
+.Comments-inputs input {
+    width: 100%;
+    margin: 4px 0;
+}
+
+.Comments-submit {
+    float: right;
+}

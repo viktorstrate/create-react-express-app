@@ -1,6 +1,8 @@
-import React, { Component } from 'react';
-import logo from '../../logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import reactLogo from '../../react.svg'
+import expressLogo from '../../express.svg'
+import mongodbLogo from '../../mongodb.svg'
+import './App.css'
 import Comments from '../Comments/Comments'
 
 class App extends Component {
@@ -8,11 +10,13 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React with Express</h2>
+          <img src={expressLogo} className="Express-logo" alt="Express" />
+          <img src={reactLogo} className="React-logo" alt="React" />
+          <img src={mongodbLogo} className="Mongo-logo" alt="MongoDB" />
+          <h2>Welcome to React with Express & MongoDB</h2>
         </div>
         <p className="App-intro">
-          To get started, edit <code>client/src/modules/App/App.js</code> and save to reload.
+          <i>To get started, edit <code>client/src/modules/App/App.js</code> and save to reload.</i>
         </p>
         <Comments/>
       </div>

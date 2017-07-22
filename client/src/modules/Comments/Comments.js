@@ -102,10 +102,16 @@ class Comments extends React.Component {
 
     return (
       <div>
-        <div>
-          Author: <input ref="inputAuthor" name="author" /><br />
-          Message: <input ref="inputMessage" name="message" /><br />
-          <input type="submit" value="Add comment" onClick={this.postComment.bind(this)} />
+        <div className="Comments-input">
+          <div className="Comments-labels" >
+            <span className="input-label">Author</span><br />
+            <span className="input-label">Message</span>
+          </div>
+          <div className="Comments-inputs">
+            <input ref="inputAuthor" name="author" /><br />
+            <input ref="inputMessage" name="message" />
+          </div>
+          <input className="Comments-submit" type="submit" value="Add comment" onClick={this.postComment.bind(this)} />
         </div>
         { Comments }
       </div>

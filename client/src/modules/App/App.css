@@ -2,23 +2,36 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
+.React-logo {
+  animation: React-logo-spin infinite 20s linear;
   height: 80px;
 }
 
+.Express-logo {
+  width: 170px;
+  top: -10px;
+  position: relative;
+}
+
+.Mongo-logo {
+  width: 180px;
+  top: -12px;
+  position: relative;
+}
+
 .App-header {
-  background-color: #222;
-  height: 150px;
+  background-color: #ffffff;
+  height: 140px;
   padding: 20px;
-  color: white;
+  border-bottom: #ccc solid 1px
 }
 
 .App-intro {
   font-size: large;
+  margin-bottom: 60px;
 }
 
-@keyframes App-logo-spin {
+@keyframes React-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
