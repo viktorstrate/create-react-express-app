@@ -28,6 +28,9 @@ $ cd my-app
 # Install dependencies, for both the server and the client
 $ npm install && cd client && npm install
 
+# Make sure you are in the project root
+$ cd ..
+
 # Start the server for development
 $ npm start
 ```
@@ -41,7 +44,7 @@ The following, explains what the different parts of the project does.
 
 ### Client
 
-The `client` folder is a modified version of `create-react-app`,
+The `client` folder is a slightly modified version of `create-react-app`,
 and contains the code that will be sent to the browser.
 
 [Read more...](https://github.com/viktorstrate/create-react-express-app/tree/master/client#client-side)
