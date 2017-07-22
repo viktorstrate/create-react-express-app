@@ -1,7 +1,7 @@
 # Create React App with Express and MongoDB
 
 A very lightweight boilerplate, for creating react apps, with express as the back-end.
-This project is inspired of the [food lookup demo](https://github.com/fullstackreact/food-lookup-demo).
+This project is inspired by the [food lookup demo](https://github.com/fullstackreact/food-lookup-demo).
 
 ## Overview
 
