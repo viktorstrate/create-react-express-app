@@ -1,11 +1,16 @@
+/**
+ * This is an example route for the api, it is responsible for handling requests to /api/comments
+ * It is registered in server.js
+ */
+
 import { Router } from 'express'
 
-import Message from '../models/Message'
+import Comment from '../models/Comment'
 
 const router = Router()
 
 router.get('/comments', (req, res) => {
-  Message.find((err, messages) => {
+  Comment.find((err, messages) => {
     if (handleError(err, res)) return
 
     return res.send({
@@ -24,7 +29,7 @@ router.post('/comments', (req, res) => {
     })
   }
 
-  let msg = new Message({
+  let msg = new Comment({
     author: req.body.author,
     message: req.body.message
   })
@@ -49,7 +54,7 @@ router.delete('/comments', (req, res) => {
     })
   }
 
-  Message.remove({ _id: req.body.commentId }, (err) => {
+  Comment.remove({ _id: req.body.commentId }, (err) => {
     if (handleError(err, res)) return
 
     res.send({

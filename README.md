@@ -38,6 +38,13 @@ $ npm start
 Now setup some enviroment variables, by copying `.env.example` to `.env`.
 And edit the new file, to match your environment.
 
+### Setup MongoDB
+
+Before starting the server make sure you have a running MongoDB server,
+follow the [MongoDB installation guide](https://docs.mongodb.com/manual/installation/).
+
+> You can change the address to something other than `localhost`, in the `.env` file.
+
 ## Project structure
 
 The following, explains what the different parts of the project does. 
@@ -58,7 +65,7 @@ server              The root of the server logic
 ├─ api/             Where all the express routes are stored
 ├─── comments.js    An example route
 ├─ models/          Models for the database
-├─── Message.js     An example model
+├─── Comment.js     An example model
 ├─ mongoose.js      Initial setup for the database
 ├─ server.js        Entry point for server
 ```

@@ -1,3 +1,8 @@
+/**
+ * This is responsible for connecting to the MongoDB server
+ * it is called by server.js
+ */
+
 import mongoose from 'mongoose'
 
 const mongoAddress = process.env.MONGO_ADDRESS || 'mongodb://localhost/mongo'

@@ -13,13 +13,12 @@ class Comments extends React.Component {
     super(props)
 
     this.state = {
-      comments: []
+      comments: [],
+      commentsState: 'loading'
     }
   }
 
   componentWillMount () {
-    console.log('Fetch comments')
-
     const self = this
 
     callApi('/api/comments').then((data) => {
@@ -29,14 +28,14 @@ class Comments extends React.Component {
       }
 
       self.setState({
-        comments: data.messages
+        comments: data.messages,
+        commentsState: 'loaded'
       })
     })
   }
 
   postComment (event) {
-    console.log('Posting comment')
-    event.preventDefault()
+    if (event) event.preventDefault()
 
     const self = this
 
@@ -54,8 +53,6 @@ class Comments extends React.Component {
   }
 
   deleteComment (commentId) {
-    console.log('Delete comment:', commentId)
-
     const self = this
 
     callApi('/api/comments', 'DELETE', { commentId })
@@ -77,6 +74,10 @@ class Comments extends React.Component {
       Comments = comments.map(comment => (
         <Comment key={comment._id} comment={comment} onDelete={this.deleteComment.bind(this)} />
       ))
+    } else if (this.state.commentsState === 'loading') {
+      Comments = <div>Loading comments...</div>
+    } else if (this.state.commentsState === 'loaded') {
+      Comments = <div>No comments yet, post some.</div>
     }
 
     return (

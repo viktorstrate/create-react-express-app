@@ -1,3 +1,7 @@
+/**
+ * This is the entry point for the server, it sets up Express, and starts the server.
+ */
+
 import express from 'express'
 import bodyParser from 'body-parser'
 import path from 'path'
