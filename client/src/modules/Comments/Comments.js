@@ -1,10 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import './Comment'
-import './Comments.css'
+import callApi from '../../utils/callApi'
 import Comment from './Comment'
+import './Comments.css'
 
+/**
+ * A component to show and modify comments
+ */
 class Comments extends React.Component {
   constructor (props) {
     super(props)
@@ -16,22 +19,23 @@ class Comments extends React.Component {
 
   componentWillMount () {
     console.log('Fetch comments')
-    fetch('/api/comments').then((res) => {
-      return res.json()
-    }).then((data) => {
+
+    const self = this
+
+    callApi('/api/comments').then((data) => {
       if (!data.success) {
         console.log(data.status)
         return
       }
 
-      this.setState({
+      self.setState({
         comments: data.messages
       })
     })
   }
 
   postComment (event) {
-    console.log('Post comment')
+    console.log('Posting comment')
     event.preventDefault()
 
     const self = this
@@ -42,23 +46,10 @@ class Comments extends React.Component {
     ReactDOM.findDOMNode(this.refs.inputMessage).value = ''
     ReactDOM.findDOMNode(this.refs.inputAuthor).value = ''
 
-    fetch('/api/comments', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        message,
-        author
+    callApi('/api/comments', 'POST', { message, author }).then((data) => {
+      self.setState({
+        comments: self.state.comments.concat(data.message)
       })
-    }).then((res) => res.json())
-      .then((json) => {
-        self.setState({
-          comments: self.state.comments.concat(json.message)
-        })
-      }).catch((err) => {
-      console.log(err)
     })
   }
 
@@ -67,28 +58,16 @@ class Comments extends React.Component {
 
     const self = this
 
-    fetch('/api/comments', {
-      method: 'DELETE',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        commentId
-      })
-    }).then((res) => res.json())
-      .then((json) => {
+    callApi('/api/comments', 'DELETE', { commentId })
+      .then((data) => {
         let newComments = self.state.comments.filter((comment) => comment._id !== commentId)
         self.setState({
           comments: newComments
         })
-      }).catch((err) => {
-      console.log(err)
-    })
+      })
   }
 
-  render() {
-
+  render () {
     let Comments = null
 
     if (this.state.comments && this.state.comments.length > 0) {
@@ -96,22 +75,22 @@ class Comments extends React.Component {
       let comments = this.state.comments.slice()
       comments.reverse()
       Comments = comments.map(comment => (
-        <Comment key={comment._id} comment={ comment } onDelete={this.deleteComment.bind(this)} />
+        <Comment key={comment._id} comment={comment} onDelete={this.deleteComment.bind(this)} />
       ))
     }
 
     return (
       <div>
-        <div className="Comments-input">
-          <div className="Comments-labels" >
-            <span className="input-label">Author</span><br />
-            <span className="input-label">Message</span>
+        <div className='Comments-input'>
+          <div className='Comments-labels' >
+            <span className='input-label'>Author</span><br />
+            <span className='input-label'>Message</span>
           </div>
-          <div className="Comments-inputs">
-            <input ref="inputAuthor" name="author" /><br />
-            <input ref="inputMessage" name="message" />
+          <div className='Comments-inputs'>
+            <input ref='inputAuthor' name='author' /><br />
+            <input ref='inputMessage' name='message' />
           </div>
-          <input className="Comments-submit" type="submit" value="Add comment" onClick={this.postComment.bind(this)} />
+          <input className='Comments-submit' type='submit' value='Add comment' onClick={this.postComment.bind(this)} />
         </div>
         { Comments }
       </div>

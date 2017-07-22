@@ -1,10 +1,10 @@
-require('dotenv').config()
-
 import express from 'express'
 import bodyParser from 'body-parser'
 import path from 'path'
 
 import { projectRoot } from '../config'
+
+require('dotenv').config()
 
 // Initialize the database
 require('./mongoose')

@@ -42,7 +42,7 @@ router.post('/comments', (req, res) => {
 
 router.delete('/comments', (req, res) => {
   console.log('Deleting comment')
-  if(!req.body.commentId) {
+  if (!req.body.commentId) {
     return res.send({
       success: false,
       status: 'Comment ID must be specified'
@@ -60,7 +60,7 @@ router.delete('/comments', (req, res) => {
   })
 })
 
-function handleError(err, res) {
+function handleError (err, res) {
   if (err) {
     console.log(err)
     res.status(500).send({
