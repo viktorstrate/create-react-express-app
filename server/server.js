@@ -4,6 +4,7 @@
 
 import express from 'express'
 import bodyParser from 'body-parser'
+import compression from 'compression'
 import path from 'path'
 
 import { projectRoot } from '../config'
@@ -22,7 +23,10 @@ app.use('/api', require('./api/comments'))
 
 // Serve client files only in production
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(projectRoot, '/client/build')))
+  app.use(compression())
+  app.use(express.static(path.join(projectRoot, '/client/build'), {
+    maxAge: '1y'
+  }))
 
   app.use('*', (req, res) => {
     res.sendFile(path.join(projectRoot, '/client/build/index.html'))

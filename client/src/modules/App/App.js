@@ -10,9 +10,9 @@ class App extends Component {
     return (
       <div className='App'>
         <div className='App-header'>
-          <img src={expressLogo} className='Express-logo' alt='Express' />
-          <img src={reactLogo} className='React-logo' alt='React' />
-          <img src={mongodbLogo} className='Mongo-logo' alt='MongoDB' />
+          <img src={expressLogo} width="170px" height="50px" className='Express-logo' alt='Express' />
+          <img src={reactLogo} width="113px" height="80px" className='React-logo' alt='React' />
+          <img src={mongodbLogo} width="180px" height="50px" className='Mongo-logo' alt='MongoDB' />
           <h2>Welcome to React with Express & MongoDB</h2>
         </div>
         <p className='App-intro'>
